@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Phillip Lackner - Android Basics 2024"
+rootProject.name = "Philipp Lackner - Android Basics 2024"
 include(":app")
