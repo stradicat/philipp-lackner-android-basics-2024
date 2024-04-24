@@ -6,9 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 
-class ContactsViewModel(
-    val helloWorld: String
-) : ViewModel() { // store state between configuration changes
+class ContactsViewModel : ViewModel() { // store state between configuration changes
     var backgroundColor by mutableStateOf(Color.White)
         private set // UI can read property but not set/write it
 
