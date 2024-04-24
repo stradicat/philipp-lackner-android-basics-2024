@@ -1,10 +1,13 @@
 package dev.dmayr.philliplackner_androidbasics2024
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -19,30 +22,30 @@ import dev.dmayr.philliplackner_androidbasics2024.ui.theme.PhillipLacknerAndroid
 
 class MainActivity : ComponentActivity() {
 
+    private fun getTAG(): String = "MainActivity"
+
 //    private val viewModel by viewModels<ContactsViewModel>() // instance of ViewModel to preserve states; it will outlive the Activity lifecycle.
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        print("onCreate()")
+        Log.d("MainActivity", "onCreate()")
 
         setContent {
             PhillipLacknerAndroidBasics2024Theme {
                 // A surface container using the 'background' color from the theme
 
-                val viewModel = viewModel<ContactsViewModel>(
-                    factory = object : ViewModelProvider.Factory {
+                val viewModel =
+                    viewModel<ContactsViewModel>(factory = object : ViewModelProvider.Factory {
                         @Suppress("UNCHECKED_CAST")
                         override fun <T : ViewModel> create(modelClass: Class<T>): T {
                             return ContactsViewModel(
                                 helloWorld = "Hello, World!"
                             ) as T
                         }
-                    }
-                )
+                    })
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-//                    color = MaterialTheme.colorScheme.background
                     color = viewModel.backgroundColor
                 ) {
                     Greeting("This is an Android app")
@@ -51,7 +54,10 @@ class MainActivity : ComponentActivity() {
                         onClick = {
                             viewModel.changeBackgroundColor()
                         }, modifier = Modifier
-                            .padding(8.dp)
+                            .padding(4.dp)
+                            .height(48.dp)
+                            .width(32.dp)
+
                     ) {
                         Text(text = "Change Color")
                     }
@@ -62,27 +68,27 @@ class MainActivity : ComponentActivity() {
 
     override fun onStart() {
         super.onStart()
-        println("onStart()")
+        Log.d(getTAG(), "onStart()")
     }
 
     override fun onResume() {
         super.onResume()
-        println("onResume()")
+        Log.d(getTAG(), "onResume()")
     }
 
     override fun onPause() {
         super.onPause()
-        println("onPause()")
+        Log.d(getTAG(), "onPause()")
     }
 
     override fun onStop() {
         super.onStop()
-        println("onStop()")
+        Log.d(getTAG(), "onStop()")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        println("onDestroy()")
+        Log.d(getTAG(), "onDestroy()")
     }
 
     override fun onRestart() {
