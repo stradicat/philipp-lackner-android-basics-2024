@@ -8,7 +8,7 @@
           <targets>
             <Target type="DEFAULT_BOOT">
               <handle>
-                <DeviceId pluginId="LocalEmulator" identifier="path=/Users/dmayr/.android/avd/Samsung_Galaxy_Note_3_API_28_9.0_Pie.avd" />
+                <DeviceId pluginId="PhysicalDevice" identifier="serial=4f1e4806" />
               </handle>
             </Target>
             <Target type="DEFAULT_BOOT">
