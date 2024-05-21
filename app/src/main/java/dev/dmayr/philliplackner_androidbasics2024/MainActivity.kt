@@ -1,16 +1,19 @@
 package dev.dmayr.philliplackner_androidbasics2024
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import dev.dmayr.philliplackner_androidbasics2024.ui.theme.PhillipLacknerAndroidBasics2024Theme
+import dev.dmayr.philliplackner_androidbasics2024.ui.theme.PhilippLacknerAndroidBasics2024Theme
 
 class MainActivity : ComponentActivity() {
 
@@ -18,14 +21,23 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            PhillipLacknerAndroidBasics2024Theme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+            PhilippLacknerAndroidBasics2024Theme {
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize(),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Greeting("This is an Android app")
-
+                    Button(
+                        onClick = {
+                            // Launch a SecondActivity, as Intent
+                            Intent(applicationContext, SecondActivity::class.java).also {
+                                startActivity(it)
+                            }
+                            Intent()
+                        }) {
+                        Text(text = "click me!")
+                    }
                 }
             }
         }
@@ -72,7 +84,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    PhillipLacknerAndroidBasics2024Theme {
+    PhilippLacknerAndroidBasics2024Theme {
         Greeting("Android")
     }
 }
