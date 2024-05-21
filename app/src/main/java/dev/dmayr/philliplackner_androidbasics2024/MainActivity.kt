@@ -1,7 +1,9 @@
 package dev.dmayr.philliplackner_androidbasics2024
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
@@ -34,10 +36,16 @@ class MainActivity : ComponentActivity() {
 //                            Intent(applicationContext, SecondActivity::class.java).also {
 //                                startActivity(it)
 //                            }
+
                             // Launch the YouTube as an Intent
                             Intent(Intent.ACTION_MAIN).also {
                                 it.`package` = "com.google.android.youtube"
-                                startActivity(it)
+                                try {
+                                    startActivity(it)
+                                } catch (e: ActivityNotFoundException) {
+                                    Log.e("Error", "YouTube app not found")
+                                    e.printStackTrace()
+                                }
                             }
                         }) {
                         Text(text = "click me!")
