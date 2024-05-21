@@ -30,8 +30,13 @@ class MainActivity : ComponentActivity() {
                 ) {
                     Button(
                         onClick = {
-                            // Launch a SecondActivity, as Intent
-                            Intent(applicationContext, SecondActivity::class.java).also {
+//                            // Launch a SecondActivity, as Intent
+//                            Intent(applicationContext, SecondActivity::class.java).also {
+//                                startActivity(it)
+//                            }
+                            // Launch the YouTube as an Intent
+                            Intent(Intent.ACTION_MAIN).also {
+                                it.`package` = "com.google.android.youtube"
                                 startActivity(it)
                             }
                         }) {
