@@ -34,7 +34,6 @@ class MainActivity : ComponentActivity() {
                             Intent(applicationContext, SecondActivity::class.java).also {
                                 startActivity(it)
                             }
-                            Intent()
                         }) {
                         Text(text = "click me!")
                     }
